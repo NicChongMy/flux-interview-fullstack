@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import MatrixTable from '../components/MatrixTable'
 
-
 export default function Home() {
   // You can either fetch the pricing here and pass it to MatrixTable
   // or, you can let MatrixTable handle the fetching
