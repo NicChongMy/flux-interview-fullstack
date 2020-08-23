@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 import { useContext, useState } from 'react'
-import { MatrixTableContext, MatrixTableContextProvider } from './context'
+import { MatrixTableContext, MatrixTableContextProvider, emptyMatrix } from './context'
 import _ from 'lodash';
 
 type Props = {
@@ -78,13 +78,14 @@ const MatrixTable: import('react').FC<Omit<Props, 'initialMatrix'>> = ({ classNa
     })
   }
 
-  // Function to clear matrix table to zero
+  // Function to reset matrix table to emptyMatrix
   const clear = async () => {
     setState({ isEditMode: true, currentMode: "CLEAR" });
     dispatch({
       type: 'SET_MATRIX',
       metadata: { resetToEmpty: true }
-    })
+    });
+    setInitialData({ dataObj: emptyMatrix });
   }
 
   // Function to enable edit mode
@@ -116,7 +117,8 @@ const MatrixTable: import('react').FC<Omit<Props, 'initialMatrix'>> = ({ classNa
       dispatch({
         type: 'SET_MATRIX',
         payload: (newMatrixValue as any)
-      })
+      });
+      setInitialData({ dataObj: newMatrixValue });
 
     } else {
       alert('Only numbers allowed.')

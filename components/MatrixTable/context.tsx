@@ -54,7 +54,7 @@ type ProviderProps = {
 /**
  * This is an empty matrix. No need to change any value in here. The variable is read-only
  */
-const emptyMatrix = {
+export const emptyMatrix = {
   "36months": {
     "lite": 0,
     "standard": 0,
